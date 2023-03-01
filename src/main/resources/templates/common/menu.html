@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+</head>
+<body>
+
+<div th:fragment="menu">
+    <nav>
+        <div id="main-nav" class="stellarnav">
+            <ul>
+                <li><a href="">КАТАЛОГ</a>
+                    <ul>
+                        <li class=""><a href="javascript:donothing();" class=" level1">Молочная ферма</a>
+                            <ul class="sub">
+                                <li class=""><a th:href="@{/drinkings}" class=" level2">Поилки</a></li>
+                                <li class=""><a th:href="@{/waterheater}" class=" level2">Водонагреватель</a></li>
+                                <li class=""><a th:href="@{/drum_pump}" class=" level2">Насос для бочки</a></li>
+                                <li class=""><a href="javascript:donothing();" class=" level2">Гигиена ДМБ</a>
+                                    <ul class="subsub ">
+                                        <li><a th:href="@{/clippy}" class="level3 ">Покрытие для пола</a></li>
+                                        <li><a th:href="@{/vol_wash}" class="level3 ">Система мойки</a></li>
+                                        <li><a th:href="@{/nozzles}" class="level3 ">Насадки на шланг</a></li>
+                                    </ul>
+                                </li>
+                                <li class=""><a href="javascript:donothing();" class=" level2">Мониторинг</a>
+                                    <ul class="subsub ">
+                                        <li class=""><a th:href="@{/mega_sens}" class=" level3">MEGA-SENS</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class=""><a href="javascript:donothing();" class=" level1">Гигиена вымени</a>
+                            <ul class="sub">
+                                <li class=""><a href="javascript:donothing();" class=" level2">Системы Ambic</a>
+                                    <ul class="subsub ">
+                                        <li><a th:href="@{/teat_spraying}" class=" level2">Обработка вымени
+                                            опрыскиванием</a></li>
+                                        <li><a href="javascript:donothing();" class=" level3">Обработка вымени пеной</a>
+                                            <ul class="subsub ">
+                                                <li><a th:href="@{/easyfoamer}" class=" level4">EasyFoamer</a></li>
+                                                <li><a th:href="@{/teat_foaming}" class="level4 ">Запчасти</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a th:href="@{/teat_dipping}" class="level3 ">Обработка вымени окунанием</a>
+                                        </li>
+                                        <li><a th:href="@{/dip_cups_filling}" class="level3 ">Система автоматического
+                                            наполнения стаканов</a></li>
+                                        <li><a th:href="@{/claw_treatment}" class="level3 ">Дезинфекция доильных
+                                            аппаратов</a></li>
+                                    </ul>
+                                </li>
+                                <li><a th:href="@{/dip_cups}" class="level2 ">Стаканчики для обработки вымени</a></li>
+                                <li><a th:href="@{/dip_mizer}" class="level2 ">Щетки для стаканов</a></li>
+                                <li><a th:href="@{/mastitis_detector}" class="level2 ">Индикаторы мастита</a></li>
+                                <li><a th:href="@{/strip_cups}" class="level2 ">Кружка для сдаивания первых струй</a>
+                                </li>
+                                <li><a th:href="@{/udder_wash_guns}" class="level2 ">Пистолеты для подмыва вымени</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class=""><a href="javascript:donothing();" class=" level1">Охлаждение молока</a>
+                            <ul class="sub">
+                                <li class=""><a href="javascript:donothing();" class=" level2">Дренажные клапаны</a>
+                                    <ul class="subsub ">
+                                        <li class=""><a th:href="@{/drain_valves}" class=" level3">Дренажные клапаны AuK
+                                            Muller</a></li>
+                                        <li class=""><a th:href="@{/spares_drain_valves}" class=" level3">Запчасти для
+                                            AuK
+                                            Muller</a></li>
+                                        <li class=""><a th:href="@{/spares_mueller_matic}" class=" level3">Запчасти для
+                                            Mueller Matic</a></li>
+                                    </ul>
+                                </li>
+                                <li class=""><a href="javascript:donothing();" class=" level2">Соленоидные клапаны</a>
+                                    <ul class="subsub ">
+                                        <li class=""><a th:href="@{/valves}" class=" level3">Клапаны AuK Muller</a></li>
+                                        <li class=""><a th:href="@{/valves_spares}" class=" level3">Запчасти для AuK
+                                            Muller</a></li>
+                                        <li class=""><a th:href="@{/solenoid_valves}" class=" level3">Управляющие
+                                            клапаны</a></li>
+                                        <li class=""><a th:href="@{/valves_ceme}" class=" level3">Клапаны CEME</a></li>
+                                    </ul>
+                                </li>
+                                <li class=""><a href="javascript:donothing();" class=" level2">Мотор-редукторы</a>
+                                    <ul class="subsub ">
+                                        <li><a th:href="@{/agitators}" class="level3 ">Мотор-редукторы в сборе</a></li>
+                                        <li><a th:href="@{/cogwhell}" class="level3 ">Запасные шестерни</a></li>
+                                        <li><a th:href="@{/spares_agitators}" class="level3 ">Запасные части</a></li>
+                                    </ul>
+                                </li>
+                                <li class=""><a href="javascript:donothing();" class=" level2">Циркуляционные насосы</a>
+                                    <ul class="subsub ">
+                                        <li class=""><a th:href="@{/circulation_pumps}" class=" level3">Насосы Sirem</a>
+                                        </li>
+                                        <li class=""><a th:href="@{/sp_circulation_pumps}" class=" level3">Запчасти</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class=""><a href="javascript:donothing();" class=" level2">Дозировочные насосы</a>
+                                    <ul class="subsub ">
+                                        <li class=""><a th:href="@{/dosing_pumps}" class=" level3">Насосы в сборе</a>
+                                        </li>
+                                        <li class=""><a th:href="@{/hose_dosing_pumps}" class=" level3">Трубки
+                                            метражом</a>
+                                        </li>
+                                        <li class=""><a th:href="@{/tube_dosing_pumps}" class=" level3">Трубки c
+                                            патрубками</a></li>
+                                        <li class=""><a th:href="@{/spares_dosing_pumps}" class=" level3">Запчасти</a>
+                                        </li>
+                                        <li class=""><a th:href="@{/hose_detergents}" class=" level3">Трубки забора
+                                            моющих
+                                            средств</a></li>
+                                    </ul>
+                                </li>
+                                <li class=""><a href="javascript:donothing();" class=" level2">Контроллеры</a>
+                                    <ul class="subsub ">
+                                        <li class=""><a th:href="@{/pcb}" class=" level3">Платы управления</a></li>
+                                        <li class=""><a th:href="@{/film_pcb}" class=" level3">Пленки</a></li>
+                                        <li class=""><a th:href="@{/temperature_sensors}" class=" level3">Датчики
+                                            температуры</a></li>
+                                        <li class=""><a th:href="@{/pgm}" class=" level3">Программный переключатель
+                                            промывки</a></li>
+                                    </ul>
+                                </li>
+                                <li class=""><a th:href="@{/pressure_switch}" class=" level2">Прессостаты</a></li>
+                                <li class=""><a th:href="@{/console}" class=" level2">Автомат промывки танка</a></li>
+                            </ul>
+                        </li>
+                        <li class=""><a href="javascript:donothing();" class=" level1">Доение молока</a>
+                            <ul class="sub">
+                                <li class=""><a th:href="@{/turbostar}" class=" level2">Система промывки TURBOSTAR</a>
+                                </li>
+                                <li class=""><a th:href="@{/cluster_purge}" class=" level2">Система дезинфекции Cluster
+                                    Purge</a></li>
+                                <li class=""><a th:href="@{/liners}" class=" level2">Сосковая резина</a></li>
+                                <li class=""><a th:href="@{/hoses}" class=" level2">Шланги</a></li>
+                                <li class=""><a th:href="@{/claw}" class=" level2">Коллектор</a></li>
+                                <li class=""><a th:href="@{/buckets}" class=" level2">Ведра</a></li>
+                                <li class=""><a th:href="@{/ambic_milk_filter}" class=" level2">Фильтр для молока
+                                    Ambic</a>
+                                </li>
+                                <li class=""><a th:href="@{/milk_sampler}" class=" level2">Отбор проб молока</a></li>
+                                <li class=""><a href="javascript:donothing();" class=" level2">Счетчики молока</a>
+                                    <ul class="subsub ">
+                                        <li><a th:href="@{/waikato_mm}" class="level3 ">Waikato</a></li>
+                                    </ul>
+                                </li>
+                                <li class=""><a href="javascript:donothing();" class=" level2">Запчасти SCR</a>
+                                    <ul class="subsub ">
+                                        <li><a th:href="@{/scr_spares}" class="level3 ">Запчасти SCR для доильного
+                                            зала</a>
+                                        </li>
+                                        <li class=""><a th:href="@{/collar}" class="level3 ">Ошейник для транспондера
+                                            SCR</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class=""><a href="javascript:donothing();" class=" level1">Определение охоты</a>
+                            <ul class="sub">
+                                <li class=""><a th:href="@{/aialert}" class=" level2">Наклейки</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="javascript:donothing();" class=" level1" title="Материалы">Материалы</a>
+                    <ul class="sub">
+                        <li class=""><a th:href="@{/articles}" class=" level2">Статьи</a></li>
+                    </ul>
+                </li>
+                <li><a th:href="@{/feedback}" title="Обратная связь" class="">Обратная связь</a></li>
+                <li><a th:href="@{/delivery}" title="Условия отправки" class="">Условия отправки</a></li>
+                <li><a th:href="@{/contacts}" title="Контакты" class="">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <script type="text/javascript">
+        jQuery('#main-nav').stellarNav();
+    </script>
+
+</div>
+
+</body>
+</html>

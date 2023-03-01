@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="ru">
+
+<head th:replace="~{common/headCommon :: headInfo(~{::title}, ~{::meta})}">
+
+    <title>Товары для животноводства, запасные части танков-молокоохладителей, доильных залов</title>
+    <meta name="keywords"
+          content="Товары для животноводства, Ambic, Sirem, Амбик, Сирем, циркуляционный насос, мотор-редуктор, дозировочный насос, счетчик молока, Вайкато, Waikato, соленоидный клапан, Мюллер, Mueller, дренажный клапан"/>
+    <meta name="description"
+          content="Товары для животноводства, запасные части для танков-молокоохладителей, доильных залов"/>
+</head>
+<body id="index2">
+
+<div id="wrapper">
+    <header>
+        <div id="header-bg"></div>
+        <div id="header">
+            <div class="center-align">
+                <div class="b-langs">
+                </div>
+
+                <a th:replace="~{common/shopNameCommon :: shopName}"></a>
+
+                <div th:replace="~{common/phoneCommon :: phoneBlock}"></div>
+
+                <div th:replace="~{common/cartCommon :: cart}"></div>
+
+                <div class="main-clear"></div>
+
+                <div th:replace="~{/common/menu :: menu}"></div>
+
+            </div>
+        </div><!-- #header-->
+
+    </header>
+
+    <div id="middle">
+        <div id="container">
+            <div id="content">
+                <div class="left-part fl">
+                    <div class="main-banner slider">
+                        <div id="slider">
+                            <div id="example" class="exampleSlider">
+                                <div class="MS-content">
+
+                                    <div class="item">
+                                        <a href="drain_valves" class="image"
+                                           style="background-image:url(/assets/loaded_main_image_1.jpg);"></a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="dip_cups" class="image"
+                                           style="background-image:url(/assets/loaded_main_image_2.jpg);"></a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="drinkings" class="image"
+                                           style="background-image:url(/assets/loaded_main_image_3.jpg);"></a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="waikato_mm" class="image"
+                                           style="background-image:url(/assets/loaded_main_image_4.jpg);"></a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="editor-content seo-description style-block" style="background: #FFFFFF;">
+                        <p><span style="font-size: 12pt;">Рады видеть Вас на страницах нашего веб-сайта.</span></p>
+                        <p><span style="font-size: 12pt;">будем рады быть Вам полезными!</span></p>
+                        <p><span style="font-size: 12pt;">технические консультации в пределах нашей компетенции абсолютно бесплатны )))</span>
+                        </p>
+                        <p><span style="font-size: 12pt;">Вы можете задать свой вопрос лично по тел. <span
+                                style="font-size: 14pt;">8-800-300-48-20</span></span></p>
+                        <p><span style="font-size: 12pt;">отправить нам сообщение на <span style="font-size: 14pt;"><a
+                                href="mailto:info@milkparts.ru">info@milkparts.ru</a></span></span></p>
+                        <p><span style="font-size: 12pt;">или положить интересующий Вас товар в корзину и отправить нам заявку</span>
+                        </p>
+
+                    </div>
+
+                    <!--noindex-->
+
+                    <h3>Товары высокого спроса:</h3>
+
+
+                </div>
+
+                <aside>
+                    <div class="right-part fr">
+
+                        <div th:replace="~{common/bannerCommon :: banner}"></div>
+
+                    </div>
+                </aside>
+
+                <div class="clear"></div>
+                <div class="main-clear">&nbsp;</div>
+            </div><!-- #content-->
+        </div><!-- #container-->
+
+
+    </div><!-- #middle-->
+
+    <div th:replace="~{common/footerCommon :: footer}"></div>
+
+</div><!-- #wrapper -->
+
+<script th:src="@{/js/multislider.min.js}"></script>
+<script type="text/javascript">
+    $('.exampleSlider').multislider();
+</script>
+
+</body>
+
+</html>

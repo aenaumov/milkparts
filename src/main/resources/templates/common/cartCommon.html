@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+</head>
+<body>
+
+<div th:fragment="cart">
+    <!--noindex-->
+    <div class="upper_menu_mobile">
+        <div class="mail_us_mobile">
+            <a class="envelope" href="mailto:info@milkparts.ru"></a>
+        </div>
+        <div class="cart">
+            <a th:href="@{/cart_items}" class="cart-inner" id="cart-inner" rel="nofollow">
+                <i></i>
+            </a>
+        </div>
+    </div>
+    <!--/noindex-->
+</div>
+
+</body>
+</html>
