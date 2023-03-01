@@ -17,6 +17,8 @@ public class IndexController {
                 return "index";
             case "delivery":
                 return "delivery";
+            case "feedback":
+                return "feedback";
             default:
                 return "404";
         }
