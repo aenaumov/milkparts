@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(path = "/{path}")
-public class IndexController {
+public class RouterController {
 
     @GetMapping
-    public String indexPage(@PathVariable String path) {
+    public String routerPage(@PathVariable String path) {
 
         switch (path) {
             case "index":
