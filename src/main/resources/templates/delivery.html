@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="ru">
+
+<head th:replace="~{common/headCommon :: headInfo(~{::title}, ~{::meta})}">
+    <title>Отправка</title>
+    <meta name="keywords" content="отгрузка заказов Петропак Групп"/>
+    <meta name="description" content="информация по организации отправки заказов транспортными компаниями по России"/>
+
+</head>
+<body id="one-column">
+
+<div id="wrapper">
+    <header>
+        <div id="header-bg"></div>
+        <div id="header">
+            <div class="center-align">
+                <div class="b-langs">
+
+                </div>
+
+                <a th:replace="~{common/shopNameCommon :: shopName}"></a>
+
+                <div th:replace="~{common/phoneCommon :: phoneBlock}"></div>
+
+                <div th:replace="~{common/cartCommon :: cart}"></div>
+
+                <div class="main-clear"></div>
+                <div th:replace="~{/common/menu :: menu}"></div>
+
+            </div>
+        </div><!-- #header-->
+    </header>
+
+    <div class="breadcrumbs center-align">
+        <a th:href="@{/index}">Главная</a> &gt;
+
+        <span>Оплата и отправка</span>
+
+    </div>
+
+    <div id="middle">
+        <div id="container">
+            <div id="content">
+                <div class="style-block" style="background: #FFFFFF;">
+                    <h1>Оплата и отправка</h1>
+                    <div class="editor-content">
+                        <p>Оплата за товар принимается только в безналичном виде.</p>
+                        <p>Для выставления счета нам нужны реквизиты Вашей компании.</p>
+                        <p>Отправка Заказа (доставка до офиса транспортной компании) осуществляется в день поступления
+                            оплаты Заказа.</p>
+                        <p>Транспортная компания на выбор Покупателя (Деловые Линии, ПЭК и др.) - укажите при оформлении
+                            Заказа.</p>
+                        <p>Услуги транспортной компании оплачивает Заказчик.</p></div>
+                </div>
+                <div class="main-clear">&nbsp;</div>
+            </div><!-- #content-->
+        </div><!-- #container-->
+
+    </div><!-- #middle-->
+
+    <div th:replace="~{common/footerCommon :: footer}"></div>
+
+</div><!-- #wrapper -->
+
+
+</body>
+
+
+</html>
