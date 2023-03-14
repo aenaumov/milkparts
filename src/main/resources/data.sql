@@ -1,0 +1,4 @@
+INSERT INTO ITEMS (ITEM_ID, ITEM_RU, ITEM_DESCRIPTION, ITEM_KEYWORDS, CAT_ID, ITEM_FIRST_PAGE)
+VALUES ('530200', 'Дренажный клапан AuK Muller DN40, 220V, NC, патрубок / патрубок',
+         'Дренажный сливной клапан AuK Muller DN40, 220V, NC, нормально закрытый, патрубок / патрубок<br>тип 4.040.116<br>2/2-ходовой<br>IP65<br>корпус клапана выполнен из пластика PPE<br>штекер<br>артикул AuK Muller 59755<br>артикул DeLaval 9804343435<br>производство Германия<br><span>В разделе <a href=\"https://www.milkparts.ru/drain_valves\">Дренажные сливные клапана AuK Muller</a> Вы можете подобрать клапана с другими техническими характеристиками</span>',
+         '59755 530200 4.040.116 4040116 9804343435', 'drain_valves', true );
