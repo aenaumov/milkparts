@@ -1,32 +1,30 @@
 package ru.milkparts.web.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import ru.milkparts.web.models.Item;
-import ru.milkparts.web.repositories.ItemRepository;
-
-import java.util.List;
-import java.util.Optional;
+import ru.milkparts.web.DTOs.ItemPageDTO;
+import ru.milkparts.web.services.PageService;
 
 @Controller
-@RequestMapping(path = "/category/{itemId}")
+@RequestMapping(path = "/{category}/{itemId:[-\\w]+}")
+
 public class ItemController {
 
-    @Autowired
-    private ItemRepository itemRepository;
+    private final PageService pageService;
+
+    public ItemController(PageService pageService) {
+        this.pageService = pageService;
+    }
 
     @GetMapping
-    public ModelAndView itemPage(@PathVariable String itemId, ModelAndView model) {
+    public ModelAndView itemPage(@PathVariable String itemId, @PathVariable String category, ModelAndView model) {
+//TODO logger
+        ItemPageDTO item = pageService.getItemPage(itemId, category);
 
-        Optional<Item> item = itemRepository.findItemByItemId(itemId);
-
-        List<Item> items = itemRepository.findAll();
-
-        model.addObject("item", item.get());
+        model.addObject("item", item);
         model.setViewName("item");
         return model;
     }
