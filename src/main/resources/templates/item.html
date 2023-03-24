@@ -2,24 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org"
       lang="ru">
 
-<!--<head itemscope itemtype="http://schema.org/WPHeader">-->
-<head th:replace="~{common/headCommon :: headInfo(~{::title}, ~{::meta})}">
-    <title itemprop="headline" th:text="${item.getItemRu()}"></title>
-<!--    <meta itemprop="keywords" name="keywords" content="<?php echo "$row[item_Keywords] $row[cat_Keywords]" ?>"/>-->
-<!--    <meta itemprop="description" name="description" content="<?php echo "$description"?>"/>-->
+<head itemscope itemtype="http://schema.org/WPHeader">
+    <!--<head>-->
+    <title itemprop="headline" th:text="${item.itemRu}"></title>
 
-<!--     <?php-->
-<!--if ($cat_canonical!=$category) {-->
-<!--echo <<<_END-->
-<!--<link rel="canonical" href="https://www.milkparts.ru/$cat_canonical/$item"/>-->
-<!--    _END;-->
-<!--    echo PHP_EOL;-->
-<!--    }-->
-<!--    ?>-->
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="robots" content="index, follow"/>
+
+    <meta itemprop="keywords" name="keywords" th:content="${item.itemKeywords} + ' ' + ${item.catKeywords}"/>
+    <meta itemprop="description" name="description" th:content="${item.itemCuttedDescription}"/>
+
+    <link rel="icon" th:href="@{../assets/favicon.ico}" type="image/x-icon"/>
+    <link rel="shortcut icon" th:href="@{../assets/favicon.ico}" type="image/x-icon"/>
+    <link rel="stylesheet" th:href="@{/css/style_v210301.css}" type="text/css" media="all"/>
+    <link rel="stylesheet" th:href="@{../css/stellarnav.min.css}" type="text/css"/>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js?ver=3.3.1"></script>
+    <script type="text/javascript" th:src="@{../js/stellarnav.js}"></script>
+    <script async type="text/javascript" th:src="@{../js/main_v211004.min.js}"></script>
+
+    <link th:rel="canonical" th:href="'https://www.milkparts.ru/'+${item.itemCatCanonicalId}+'/'+${item.itemId}"
+          th:if="${item.itemCatCanonicalId}!=${item.catId}"/>
 
 </head>
 <body id="">
-
 
 <div id="wrapper">
     <header>
@@ -27,7 +34,6 @@
         <div id="header">
             <div class="center-align">
                 <div class="b-langs">
-
                 </div>
 
                 <a th:replace="~{common/shopNameCommon :: shopName}"></a>
@@ -45,11 +51,10 @@
     </header>
 
     <div class="breadcrumbs center-align">
-        <a th:href="@{/index}">Главная</a> &gt;
-<!--        <a href="../<?php echo "$row[Id_Cat]" ?>"><?php echo "$row[cat_Ru]" ?></a> &gt;-->
-        <span style="text-decoration: none;" th:text="${item.getItemRu()}"></span>
+        <a th:href="@{/index}">Главная</a> >
+        <a th:href="@{/{cat}(cat=${item.catId})}" th:text="${item.catRu}"> Поменять Категорию</a> >
+        <span style="text-decoration: none;" th:text="${item.itemRu}"></span>
     </div>
-
 
     <div id="middle">
         <main>
@@ -60,24 +65,22 @@
                             <div class="product-wrap">
                                 <div class="photo fl">
 
-                                    <a href="<?php echo "../img/item/".$row['Id_Item'].".jpg"?>"
-                                    class="img big-img" title="<?php echo "$row[item_Ru]"?>">
+                                    <a th:href="'/img/item/'+${item.itemId}+'.jpg'"
+                                       class="img big-img" th:title="${item.itemRu}">
 
-                                    <picture itemscope itemtype="https://schema.org/ImageObject">
+                                        <picture itemscope itemtype="https://schema.org/ImageObject">
 
-                                        <?php
-														$img="https://www.milkparts.ru/img/item/".$row['Id_Item'].".jpg";
-														$imgWebP="https://www.milkparts.ru/img/item/medium_".$row['Id_Item'].".webp";
-													?>
+                                            <source th:srcset="'https://www.milkparts.ru/img/item/medium_'+${item.itemId}+'.webp'"
+                                                    type="image/webp" id="addIWebPFromGallery">
 
-                                        <source srcset="<?php echo "$imgWebP" ?>" type="image/webp" id="addIWebPFromGallery">
+                                            <img th:src="'https://www.milkparts.ru/img/item/'+${item.itemId}+'.jpg'"
+                                                 th:alt="${item.itemRu}" class="big-image" id="addImgFromGallery"
+                                                 itemprop="contentUrl"/>
+                                            <meta itemprop="representativeOfPage" content="true">
+                                            <meta itemprop="description" th:content="${item.itemCuttedDescription}">
+                                            <meta itemprop="name" th:content="${item.itemRu}">
 
-                                        <img src="<?php echo "$img" ?>" alt="<?php echo "$row[item_Ru]"?>" class="big-image" id="addImgFromGallery" itemprop="contentUrl"/>
-                                        <meta itemprop="representativeOfPage" content="true">
-                                        <meta itemprop="description" content="<?php echo "$description"?>">
-                                        <meta itemprop="name" content="<?php echo "$row[item_Ru]"?>">
-
-                                    </picture>
+                                        </picture>
 
                                     </a>
 
@@ -85,66 +88,24 @@
 
                                 <div class="fl product-info">
 
-                                    <h1 class="title" id="title"><?php echo "$row[item_Ru]"?></h1>
+                                    <h1 class="title" id="title" th:text="${item.itemRu}"></h1>
 
                                     <div class="buyzone quantity">
-                                        <?php echo "<p style=\"color:#1D96E2;\">Цена по запросу</p>";?>
+                                        <p style="color:#1D96E2">Цена по запросу</p>
 
                                         <span class="arrows fl">
-											<input type="text" disabled="disabled" data-price="$row[price]" class="quantity_input qwt" value="1" />
+											<input type="text" disabled="disabled" data-price="$row[price]"
+                                                   class="quantity_input qwt" value="1"/>
 
 											<span class="plus"></span>
 											<span class="minus"></span>
 										</span>
-                                        <input type="hidden" id="qty" name="quantity" class="quantity_input_form qwt2" value="1" />
+                                        <input type="hidden" id="qty" name="quantity" class="quantity_input_form qwt2"
+                                               value="1"/>
 
                                     </div>
 
-                                    <button class="buy_button add_button" id_item="<?php echo "$row[Id_Item]"?>">В корзину</button>
-
-                                    <?php
-
-$querySlaveImg="SELECT Img_Slave FROM `img_slave` WHERE Item_Master=\"$item\"";
-
-if ($resultSlaveImg = $mysqli->query($querySlaveImg) and $resultSlaveImg->num_rows >0) {
-
-
-
-                                    echo <<< _END
-                                    <!--noindex-->
-                                    <div class="gallery">
-                                        _END;
-
-                                        while ($rowSlaveImg=$resultSlaveImg->fetch_array ()) {
-
-                                        echo <<<_END
-
-                                        <div>
-                                             <picture>
-                                                <source srcset="../img/gallery/$rowSlaveImg[Img_Slave].webp" type="image/webp">
-                                                <img data-src="../img/gallery/$rowSlaveImg[Img_Slave].jpg" alt="" class="img_button" data-item="$rowSlaveImg[Img_Slave]"/>
-                                            </picture>
-
-                                        </div>
-                                        _END;
-                                        }
-
-                                        echo <<<_END
-
-                                    </div>
-
-                                    <div id="gallery_big">
-
-                                    </div>
-
-                                    <!--/noindex-->
-
-                                    _END;
-
-                                    /* очищаем результирующий набор */
-                                    $resultSlaveImg->close();
-                                    }
-                                    ?>
+                                    <button class="buy_button add_button" th:id_item="${item.itemId}">В корзину</button>
 
                                     <div id="price-list">
                                     </div>
@@ -156,132 +117,41 @@ if ($resultSlaveImg = $mysqli->query($querySlaveImg) and $resultSlaveImg->num_ro
 
                             <div class="description editor-content">
                                 <h2>Описание: </h2>
-                                <div th:utext="${item.getItemDescription()}">
+                                <div th:utext="${item.itemDescription}">
                                 </div>
                             </div>
 
                         </div>
                     </div>
 
-                    <div class="main-clear">&nbsp;
+                    <div class="main-clear">
                     </div>
                 </div><!-- #content-->
             </div><!-- #container-->
         </main>
 
-
         <aside>
             <div class="sidebar" id="sideLeft">
 
-                <?php require_once 'scripts/banner_block.php'?>
-
+                <div th:replace="~{common/bannerCommon :: banner}"></div>
 
             </div><!-- .sidebar#sideLeft -->
         </aside>
 
         <script type="text/javascript">
 
-            [].forEach.call(document.querySelectorAll('img[data-src]'),    function(img) {
+            [].forEach.call(document.querySelectorAll('img[data-src]'), function (img) {
                 img.setAttribute('src', img.getAttribute('data-src'));
-                img.onload = function() {
+                img.onload = function () {
                     img.removeAttribute('data-src');
                 };
             });
 
         </script>
 
-        <!-- Блок сопутствующих! -->
-        <!--noindex-->
+    </div><!-- #middle-->
 
-<!--        <?php-->
-
-<!--$result->close();-->
-
-<!--        /* Второй запрос */-->
-
-<!--        $query="SELECT item.Id_Item, item.item_Ru, item.item_Description, fitted_item.Item_Master, fitted_item.Item_Slave, item_to_category.Id_Cat FROM item, fitted_item, item_to_category WHERE item.Id_Item=fitted_item.Item_Slave AND fitted_item.Item_Master=\"$item\" AND item_to_category.canon=1 AND item_to_category.Id_Item=item.Id_Item";-->
-
-<!--        /* Select запросы возвращают результирующий набор */-->
-
-<!--        if ($result = $mysqli->query($query)) {-->
-<!--        /*printf("Select вернул %d строки.\n".'<br>', $result->num_rows);*/-->
-
-<!--        if ($num_rows=$result->num_rows>0) {-->
-
-<!--        $num=0;-->
-
-<!--        echo "<div id=\"container\">";-->
-<!--        echo "<div id=\"content\">";-->
-
-<!--            echo "<h3>Запасные части для: ".$row['item_Ru']."</h3>";-->
-
-<!--            echo "<div class=\"style-block\" style=\"background: #FFFFFF;\">";-->
-<!--            while ($row=$result->fetch_array ()) {-->
-<!--            /*echo $row['Id_Item'].'_'.$row['item_Description'].'<br/>';*/-->
-<!--            $img="../img/item/compact_".$row['Id_Item'].".jpg";-->
-<!--            $imgWebP="../img/item/compact_".$row['Id_Item'].".webp";-->
-
-<!--            ++$num;-->
-
-<!--            if ($num%2==0 && $num==2) echo "<div class=\"prod-block side first \">";-->
-<!--            elseif ($num%2==0 && !($num==2)) echo "<div class=\"prod-block side  \">";-->
-<!--            elseif (!($num%2==0) && $num==1) echo "<div class=\"prod-block  first \">";-->
-<!--            elseif (!($num%2==0) && !($num==1)) echo "<div class=\"prod-block   \">";-->
-
-<!--            echo <<<_END-->
-
-
-<!--            <div class="prod-block-inner spares">-->
-<!--                <h2><a href="../$row[Id_Cat]/$row[Id_Item]">$row[item_Ru]</a></h2>-->
-
-<!--                <div class="fl prod-img">-->
-
-<!--                    <a href="../$row[Id_Cat]/$row[Id_Item]" class="img">-->
-<!--                        <picture>-->
-<!--                            <source srcset="$imgWebP" type="image/webp">-->
-<!--                            <img src="$img"/>-->
-<!--                        </picture>-->
-<!--                    </a>-->
-
-<!--                </div>-->
-
-<!--                <div class="fr prod-info">-->
-
-<!--                    <div>-->
-
-<!--                        <div class="prod-descr " >-->
-<!--                            $row[item_Description]-->
-<!--                        </div>-->
-
-<!--                    </div>-->
-<!--                    <a href="../$row[Id_Cat]/$row[Id_Item]" class="btn btn-green">Подробнее</a>-->
-
-<!--                </div>-->
-<!--            </div>-->
-
-<!--        </div>-->
-
-
-<!--        _END;-->
-<!--        }-->
-<!--        echo "</div>";-->
-
-<!--        echo "</div>&lt;!&ndash; #content&ndash;&gt;";-->
-<!--    echo "</div>&lt;!&ndash; #container&ndash;&gt;";-->
-
-<!--/* очищаем результирующий набор */-->
-<!--$result->close();-->
-<!--}-->
-<!--}-->
-
-<!--$mysqli->close();-->
-<!--?>-->
-
-<!--/noindex-->
-
-</div><!-- #middle-->
-
-<div th:replace="~{common/footerCommon :: footer}"></div>
+    <div th:replace="~{common/footerCommon :: footer}"></div>
 
 </div><!-- #wrapper -->
 
