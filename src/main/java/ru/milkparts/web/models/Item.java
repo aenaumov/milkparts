@@ -2,10 +2,7 @@ package ru.milkparts.web.models;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 //import javax.persistence.*;
 
@@ -14,14 +11,11 @@ import lombok.Setter;
 @Setter
 @Getter
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(access= AccessLevel.PROTECTED, force=true)
 public class Item {
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ITEM_ID")
-//    private Long id;
-//    @Column(name="ITEM_NUMBER")
     private String itemId;
     @Column(name="ITEM_RU")
     private String itemRu;
@@ -30,7 +24,10 @@ public class Item {
     @Column(name="ITEM_KEYWORDS")
     private String itemKeywords;
     @Column(name="CAT_ID")
-    private String catId;
+//    TODO check CascadeType
+//    @PrimaryKeyJoinColumn(name="CAT_ID")
+//    @OneToOne
+    private String catCanonicalId;
     @Column(name="ITEM_FIRST_PAGE")
     private Boolean itemFirstPage;
 }
