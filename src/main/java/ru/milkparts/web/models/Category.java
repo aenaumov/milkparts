@@ -3,7 +3,7 @@ package ru.milkparts.web.models;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "CATEGORIES")
@@ -22,8 +22,6 @@ public class Category {
     private String catDescription;
     @Column(name = "CAT_KEYWORDS")
     private String catKeywords;
-
-//    TODO check CascadeType
-    @OneToMany(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
-    private List<Item> items;
+    @OneToMany(fetch = FetchType.LAZY)
+    private Set<Item> items;
 }
