@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="ru">
+
+<head>
+    <title><?php echo "$row[cat_Ru]" ?></title>
+    <meta name="keywords" content="<?php echo "$row[cat_Keywords]" ?>" />
+    <meta name="description" content="<?php echo "$description" ?>" />
+    <?php require_once 'scripts/head.php'?>
+    <!-- <link rel="canonical" href="www.milkparts.ru/category.php?cat=<?php echo "$cat" ?>"/> -->
+
+</head>
+<body id="">
+
+<div id="wrapper">
+    <header>
+        <div id="header-bg"></div>
+        <div id="header">
+            <div class="center-align">
+                <div class="b-langs">
+                </div>
+
+                <a th:replace="~{common/shopNameCommon :: shopName}"></a>
+
+                <div th:replace="~{common/phoneCommon :: phoneBlock}"></div>
+
+                <div th:replace="~{common/cartCommon :: cart}"></div>
+
+                <div class="main-clear"></div>
+
+                <div th:replace="~{/common/menu :: menu}"></div>
+
+            </div>
+        </div><!-- #header-->
+    </header>
+
+    <div class="breadcrumbs center-align">
+        <a href="index">Главная</a> &gt;
+        <span><?php echo "$row[cat_Ru]" ?></span>
+
+    </div>
+
+    <div id="middle">
+        <div id="container">
+            <div id="content">
+                <!--   <h1 style="padding-right: 185px;">  -->
+                <h1><?php echo "$row[cat_Ru]" ?></h1>
+                <div class="editor-content clear style-block" style="background: #FFFFFF; padding-bottom: 3px;">
+                    <p><?php echo "$row[cat_Description]" ?></p>
+                </div>
+
+
+<!--                <?php
+
+/* проверка наличия доп параметров для категории*/
+if ("$row[Param_Table]") {
+require_once 'scripts/filter_yes.php';
+} else {
+require_once 'scripts/filter_no.php';
+}
+
+
+?>-->
+
+            </div><!-- #middle-->
+
+            <?php require_once 'scripts/footer.php'?>
+
+        </div><!-- #wrapper -->
+
+
+</body>
+
+</html>
