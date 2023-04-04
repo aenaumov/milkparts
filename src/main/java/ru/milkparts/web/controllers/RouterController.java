@@ -4,24 +4,41 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import ru.milkparts.web.DTOs.CategoryPageDTO;
+import ru.milkparts.web.services.PageService;
 
 @Controller
 @RequestMapping(path = "/{path}")
+
 public class RouterController {
 
+    private final PageService pageService;
+
+    public RouterController(PageService pageService) {
+        this.pageService = pageService;
+    }
+
     @GetMapping
-    public String routerPage(@PathVariable String path) {
+    public ModelAndView routerPage(@PathVariable String path, ModelAndView model) {
 
-        switch (path) {
-            case "index":
-                return "index";
-            case "delivery":
-                return "delivery";
-            case "feedback":
-                return "feedback";
-            default:
-                return "404";
-        }
+        return switch (path) {
+            case "index", "delivery", "feedback" -> getStaticPage(path, model);
+            default -> getCategoryPage(path, model);
+        };
 
+    }
+
+    private ModelAndView getStaticPage (String path, ModelAndView model){
+        model.setViewName(path);
+        return model;
+    }
+
+    private ModelAndView getCategoryPage (String path, ModelAndView model){
+
+        CategoryPageDTO cat = pageService.getCategoryPage(path);
+        model.addObject("cat", cat);
+        model.setViewName("category");
+        return model;
     }
 }
