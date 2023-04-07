@@ -4,6 +4,8 @@ package ru.milkparts.web.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 //import javax.persistence.*;
 
 @Entity
@@ -23,11 +25,14 @@ public class Item {
     private String itemDescription;
     @Column(name="ITEM_KEYWORDS")
     private String itemKeywords;
-    @Column(name="CAT_ID")
+    @Column(name="CAT_CANONICAL")
 //    TODO check CascadeType
 //    @PrimaryKeyJoinColumn(name="CAT_ID")
 //    @OneToOne
     private String catCanonicalId;
+
+//    @OneToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+//    private List<Category> categories;
     @Column(name="ITEM_FIRST_PAGE")
     private Boolean itemFirstPage;
 }
