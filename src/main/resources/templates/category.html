@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="ru">
+
+<head th:replace="~{common/headCommon :: headInfo(~{::title}, ~{::meta})}">
+    <title th:text="${cat.catRu}"></title>
+
+    <meta name="keywords" th:content="${cat.catKeywords}"/>
+    <meta name="description" th:content="${cat.catCuttedDescription}"/>
+
+</head>
+<body id="">
+
+<div id="wrapper">
+    <header>
+        <div id="header-bg"></div>
+        <div id="header">
+            <div class="center-align">
+                <div class="b-langs">
+                </div>
+
+                <a th:replace="~{common/shopNameCommon :: shopName}"></a>
+
+                <div th:replace="~{common/phoneCommon :: phoneBlock}"></div>
+
+                <div th:replace="~{common/cartCommon :: cart}"></div>
+
+                <div class="main-clear"></div>
+
+                <div th:replace="~{/common/menu :: menu}"></div>
+
+            </div>
+        </div><!-- #header-->
+    </header>
+
+    <div class="breadcrumbs center-align">
+        <a href="index">Главная</a> &gt;
+        <span th:text="${cat.catRu}"></span>
+
+    </div>
+
+    <div id="middle">
+        <div id="container">
+            <div id="content">
+                <h1 th:text="${cat.catRu}"></h1>
+                <div class="editor-content clear style-block" style="background: #FFFFFF; padding-bottom: 3px;">
+                    <p th:text="${cat.catDescription}"></p>
+                </div>
+
+
+                <div class="style-block" style="background: #FFFFFF">
+
+                    <div th:class="'prod-block '
+                        + (${itemStat.even}?  'side ':'')
+                        + ( ${itemStat.count==1} or ${itemStat.count==2}? 'first':'')"
+                         th:each="item : ${cat.itemDTOs}">
+
+                        <div class="prod-block-inner">
+                            <h2 th:text="${item.itemRu}"><a th:href="${cat.catId}+'/'+${item.itemId}">$row[item_Ru]</a>
+                            </h2>
+                            <div class="fl prod-img">
+                                <!-- <a href="$row[Id_Cat]"/item.php?item=$row[Id_Item]" style="background: url($img) center center no-repeat #fff;" class="img"> </a> -->
+                                <a th:href="${cat.catId}+'/'+${item.itemId}" class="img">
+                                    <picture>
+                                        <source th:srcset="'img/item/compact_'+${item.itemId}+'.webp'"
+                                                type="image/webp">
+                                        <img th:src="'img/item/compact_'+${item.itemId}+'.jpg'" loading="lazy"/>
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="fr prod-info">
+                                <div>
+                                    <div class="prod-descr " th:text="${item.itemRu}">
+
+                                    </div>
+                                </div>
+                                <a th:href="${cat.catId}+'/'+${item.itemId}" class="btn btn-green">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-clear">&nbsp;</div>
+            </div><!-- #content-->
+        </div><!-- #container-->
+
+        <aside>
+            <div class="sidebar" id="sideLeft">
+
+                <div th:replace="~{common/bannerCommon :: banner}"></div>
+
+            </div><!-- .sidebar#sideLeft -->
+        </aside>
+
+
+    </div><!-- #middle-->
+
+    <div th:replace="~{common/footerCommon :: footer}"></div>
+
+</div><!-- #wrapper -->
+
+</body>
+
+</html>
