@@ -9,7 +9,7 @@ import ru.milkparts.web.DTOs.ItemPageDTO;
 import ru.milkparts.web.services.PageService;
 
 @Controller
-@RequestMapping(path = "/{category}/{itemId:[-\\w]+}")
+@RequestMapping(path = "/{categoryId}/{itemId:[-\\w]+}")
 
 public class ItemController {
 
@@ -20,9 +20,9 @@ public class ItemController {
     }
 
     @GetMapping
-    public ModelAndView itemPage(@PathVariable String itemId, @PathVariable String category, ModelAndView model) {
+    public ModelAndView itemPage(@PathVariable String itemId, @PathVariable String categoryId, ModelAndView model) {
 //TODO logger
-        ItemPageDTO item = pageService.getItemPage(itemId, category);
+        ItemPageDTO item = pageService.getItemPage(itemId, categoryId);
 
         model.addObject("item", item);
         model.setViewName("item");
