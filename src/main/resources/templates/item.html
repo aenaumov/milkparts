@@ -13,14 +13,14 @@
     <meta itemprop="keywords" name="keywords" th:content="${item.itemKeywords} + ' ' + ${item.catKeywords}"/>
     <meta itemprop="description" name="description" th:content="${item.itemCuttedDescription}"/>
 
-    <link rel="icon" th:href="@{../assets/favicon.ico}" type="image/x-icon"/>
-    <link rel="shortcut icon" th:href="@{../assets/favicon.ico}" type="image/x-icon"/>
+    <link rel="icon" th:href="@{/assets/favicon.ico}" type="image/x-icon"/>
+    <link rel="shortcut icon" th:href="@{/assets/favicon.ico}" type="image/x-icon"/>
     <link rel="stylesheet" th:href="@{/css/style_v210301.css}" type="text/css" media="all"/>
-    <link rel="stylesheet" th:href="@{../css/stellarnav.min.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/css/stellarnav.min.css}" type="text/css"/>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js?ver=3.3.1"></script>
-    <script type="text/javascript" th:src="@{../js/stellarnav.js}"></script>
-    <script async type="text/javascript" th:src="@{../js/main_v211004.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/stellarnav.js}"></script>
+    <script async type="text/javascript" th:src="@{/js/main_v211004.min.js}"></script>
 
     <link th:rel="canonical" th:href="'https://www.milkparts.ru/'+${item.itemCatCanonicalId}+'/'+${item.itemId}"
           th:if="${item.itemCatCanonicalId}!=${item.catId}"/>
@@ -51,8 +51,8 @@
     </header>
 
     <div class="breadcrumbs center-align">
-        <a th:href="@{/index}">Главная</a> >
-        <a th:href="@{/{cat}(cat=${item.catId})}" th:text="${item.catRu}"> Поменять Категорию</a> >
+        <a th:href="@{/index}">Главная</a> &gt;
+        <a th:href="@{/{cat}(cat=${item.catId})}" th:text="${item.catRu}"> Поменять Категорию</a> &gt;
         <span style="text-decoration: none;" th:text="${item.itemRu}"></span>
     </div>
 
