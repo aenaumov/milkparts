@@ -27,7 +27,7 @@ public class PageServiceImpl implements PageService{
 
     @Override
     public CategoryPageDTO getCategoryPage(String catId){
-        final Category category = getCategory(catId);
+        final Category category = getCategoryFetchItems(catId);
         final String cuttedDescription=stringCutter(category.getCatDescription());
 
         return MapperToCategoryPageDTO.toCategoryPageDTO(category, cuttedDescription);
@@ -36,7 +36,7 @@ public class PageServiceImpl implements PageService{
     @Override
     public ItemPageDTO getItemPage(String itemId, String catId) {
 
-        final Category category = getCategory(catId);
+        final Category category = getCategoryWithoutFetchItems(catId);
 
         final Item item = itemRepository.findItemByItemId(itemId).orElseThrow(
                 () -> new NotFoundException("No such item:" + itemId));
@@ -57,8 +57,14 @@ public class PageServiceImpl implements PageService{
         return newStr;
     }
 
-    private Category getCategory(String catId){
+    private Category getCategoryFetchItems(String catId){
         return categoryRepository.findById(catId).orElseThrow(
                 () -> new NotFoundException("No such category:" + catId));
     }
+
+    private Category getCategoryWithoutFetchItems(String catId){
+        return categoryRepository.findCategoryByCatId(catId).orElseThrow(
+                () -> new NotFoundException("No such category:" + catId));
+    }
 }
+
