@@ -14,4 +14,5 @@ public interface CategoryRepository extends JpaRepository<Category, String> {
     @EntityGraph(attributePaths = {"items"}, type = EntityGraph.EntityGraphType.FETCH)
     Optional<Category> findById(String s);
 
+    Optional<Category> findCategoryByCatId(String cat);
 }
