@@ -2,11 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org"
       lang="ru">
 
-<head th:replace="~{common/headCommon :: headInfo(~{::title}, ~{::meta})}">
+<head th:replace="~{common/headCommon :: headInfo(~{::title}, ~{::meta}, ~{::link})}" >
     <title th:text="${cat.catRu}"></title>
 
     <meta name="keywords" th:content="${cat.catKeywords}"/>
     <meta name="description" th:content="${cat.catCuttedDescription}"/>
+    <link/>
 
 </head>
 <body id="">
