@@ -2,13 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org"
       lang="ru">
 
+
 <head th:replace="~{common/headCommon :: headInfo(~{::title}, ~{::meta})}">
-    <title>Обратная связь</title>
-    <meta name="keywords" content="написать сообщение Петропак Групп"/>
-    <meta name="description" content="обратная связь Петропак Групп"/>
+    <title>ошибка 500</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content="ошибка 500"/>
 
 </head>
-<body id="one-column">
+<body id="">
 
 <div id="wrapper">
     <header>
@@ -35,26 +36,18 @@
 
     <div class="breadcrumbs center-align">
         <a th:href="@{/index}">Главная</a> &gt;
-        <span>Обратная связь</span>
+
+        <span style="text-decoration: none;">Ошибка 500</span>
 
     </div>
+
 
     <div id="middle">
         <div id="container">
             <div id="content">
-                <div class="style-block" style="background: #FFFFFF;">
-                    <h1>Отправьте нам Ваш запрос</h1>
-                    <div class="editor-content">
+                <h1 style="padding-right: 185px;">Извините, произошла ошибка на сервере<br>Возможно ведутся работы<br>
+                    Попробуйте обновить страницу позже</h1>
 
-                        <p><span style="font-size: 12pt;">Вы можете задать свой вопрос лично по тел. <span
-                                style="font-size: 14pt;">8-800-300-48-20</span> БЕСПЛАТНО для звонков из РФ</span></p>
-                        <p><span style="font-size: 12pt;">отправить нам сообщение на <span style="font-size: 14pt;"><a
-                                href="mailto:info@milkparts.ru">info@milkparts.ru</a></span></span></p>
-                        <p><span style="font-size: 12pt;">или положить интересующий Вас товар в корзину и отправить нам заявку</span>
-                        </p>
-
-                    </div>
-                </div>
                 <div class="main-clear">&nbsp;</div>
             </div><!-- #content-->
         </div><!-- #container-->
@@ -68,11 +61,13 @@
             </div><!-- .sidebar#sideLeft -->
         </aside>
 
+
     </div><!-- #middle-->
 
     <div th:replace="~{common/footerCommon :: footer}"></div>
 
 </div><!-- #wrapper -->
+
 
 </body>
 
