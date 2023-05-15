@@ -1,4 +1,4 @@
-package ru.milkparts.web.DTOs;
+package ru.milkparts.web.models.DTOs;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
