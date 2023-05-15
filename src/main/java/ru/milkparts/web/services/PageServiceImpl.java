@@ -1,8 +1,8 @@
 package ru.milkparts.web.services;
 
 import org.springframework.stereotype.Service;
-import ru.milkparts.web.DTOs.CategoryPageDTO;
-import ru.milkparts.web.DTOs.ItemPageDTO;
+import ru.milkparts.web.models.DTOs.CategoryPageDTO;
+import ru.milkparts.web.models.DTOs.ItemPageDTO;
 import ru.milkparts.web.exceptions.NotFoundException;
 import ru.milkparts.web.models.Category;
 import ru.milkparts.web.models.Item;
