@@ -34,7 +34,8 @@ CREATE TABLE USERS
     USERNAME      VARCHAR(50)                             NOT NULL,
     EMAIL         VARCHAR(50)                             NOT NULL,
     USER_PASSWORD VARCHAR(200)                            NOT NULL,
-    CONSTRAINT USER_PK PRIMARY KEY (USER_ID)
+    CONSTRAINT USER_PK PRIMARY KEY (USER_ID),
+    CONSTRAINT EMAIL_UNIQUE UNIQUE (EMAIL)
 )
 
 -- create indexes
