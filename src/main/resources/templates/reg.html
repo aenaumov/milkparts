@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="ru">
+
+<!--<head>-->
+<head th:replace="~{common/headCommon :: headInfo(~{::title}, ~{::meta}, ~{::link})}" >
+    <title>регистрация</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content="регистрация пользователя"/>
+
+    <link/>
+
+</head>
+<body id="">
+
+<div id="wrapper">
+    <header>
+        <div id="header-bg"></div>
+        <div id="header">
+            <div class="center-align">
+                <div class="b-langs">
+
+                </div>
+
+                <a th:replace="~{common/shopNameCommon :: shopName}"></a>
+
+                <div th:replace="~{common/phoneCommon :: phoneBlock}"></div>
+
+                <div th:replace="~{common/cartCommon :: cart}"></div>
+
+                <div class="main-clear"></div>
+
+                <div th:replace="~{/common/menu :: menu}"></div>
+
+            </div>
+        </div><!-- #header-->
+    </header>
+
+    <div class="breadcrumbs center-align">
+        <a th:href="@{/index}">Главная</a> &gt;
+
+        <span style="text-decoration: none;">регистрация пользователя</span>
+
+    </div>
+
+
+    <div id="middle">
+        <div id="container">
+            <div id="content">
+                <h1 style="padding-right: 185px;">Для регистрации заполните форму, пожалуйста</h1>
+
+                <form action="#" th:action="@{reg}" th:object="${user}" method="POST" enctype="utf8">
+
+                    <div th:if="${message}">
+                        <p th:text="${message}">...</p>
+                    </div>
+
+                    <div>
+                        <label >Username: </label>
+                        <input th:field="*{username}"/>
+                        <p th:if="${#fields.hasErrors('username')}"
+                           th:errors="*{username}">Validation error</p>
+                    </div>
+                    <div>
+                        <label >Email: </label>
+                        <input type="email" th:field="*{email}"/>
+                        <p th:if="${#fields.hasErrors('email')}"
+                           th:errors="*{email}">Validation error</p>
+                    </div>
+                    <div>
+                        <label >Password: </label>
+                        <input type="password" th:field="*{password}"/>
+                        <p th:if="${#fields.hasErrors('password')}"
+                           th:errors="*{password}">Validation error</p>
+                    </div>
+                    <div>
+                        <label >Confirm password: </label>
+                        <input type="password" th:field="*{matchingPassword}"/>
+                        <p th:if="${#fields.hasErrors('matchingPassword')}"
+                           th:errors="*{matchingPassword}">Validation error</p>
+
+                        <div th:if="${#fields.hasGlobalErrors()}">
+                            <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+                        </div>
+
+                    </div>
+                    <button type="submit" >submit</button>
+                </form>
+
+                <div class="main-clear">&nbsp;</div>
+            </div><!-- #content-->
+        </div><!-- #container-->
+
+        <aside>
+
+            <div class="sidebar" id="sideLeft">
+
+                <div th:replace="~{common/bannerCommon :: banner}"></div>
+
+            </div><!-- .sidebar#sideLeft -->
+        </aside>
+
+
+    </div><!-- #middle-->
+
+    <div th:replace="~{common/footerCommon :: footer}"></div>
+
+</div><!-- #wrapper -->
+
+
+</body>
+
+</html>
