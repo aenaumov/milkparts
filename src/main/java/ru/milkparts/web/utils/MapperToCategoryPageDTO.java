@@ -1,6 +1,6 @@
 package ru.milkparts.web.utils;
 
-import ru.milkparts.web.DTOs.CategoryPageDTO;
+import ru.milkparts.web.models.DTOs.CategoryPageDTO;
 import ru.milkparts.web.models.Category;
 import ru.milkparts.web.models.Item;
 
