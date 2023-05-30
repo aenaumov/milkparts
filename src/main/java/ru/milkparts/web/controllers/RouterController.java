@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import ru.milkparts.web.DTOs.CategoryPageDTO;
+import ru.milkparts.web.models.DTOs.CategoryPageDTO;
 import ru.milkparts.web.services.PageService;
 
 @Controller
@@ -23,10 +23,10 @@ public class RouterController {
     public ModelAndView routerPage(@PathVariable String path, ModelAndView model) {
 
         return switch (path) {
-            case "index", "delivery", "feedback" -> getStaticPage(path, model);
+            case "index", "delivery", "feedback", "login" -> getStaticPage(path, model);
+
             default -> getCategoryPage(path, model);
         };
-
     }
 
     private ModelAndView getStaticPage (String path, ModelAndView model){
@@ -41,4 +41,5 @@ public class RouterController {
         model.setViewName("category");
         return model;
     }
+
 }

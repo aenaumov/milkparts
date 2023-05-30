@@ -17,3 +17,6 @@ VALUES ('530200', 'Дренажный клапан AuK Muller DN40, 220V, NC, п
 INSERT INTO CATEGORIES_ITEMS (CATEGORY_CAT_ID, ITEMS_ITEM_ID)
 VALUES ('drain_valves', '530200'),
        ('drain_valves', '530153');
+
+-- INSERT INTO USERS (USER_ID, USERNAME, EMAIL, USER_PASSWORD)
+-- VALUES ( 1L, 'test', 'test@gmail.com', '$2a$10$ORpoMiEEipM8r1EOiVduw.f0MN0dskKzcvut6Md/scLyrfm5ADzuK');

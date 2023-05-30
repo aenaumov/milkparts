@@ -1,7 +1,7 @@
 package ru.milkparts.web.services;
 
-import ru.milkparts.web.DTOs.CategoryPageDTO;
-import ru.milkparts.web.DTOs.ItemPageDTO;
+import ru.milkparts.web.models.DTOs.CategoryPageDTO;
+import ru.milkparts.web.models.DTOs.ItemPageDTO;
 
 
 public interface PageService {

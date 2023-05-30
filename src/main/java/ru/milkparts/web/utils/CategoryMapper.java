@@ -1,6 +1,6 @@
 package ru.milkparts.web.utils;
 
-import ru.milkparts.web.DTOs.CategoryPageDTO;
+import ru.milkparts.web.models.DTOs.CategoryPageDTO;
 import ru.milkparts.web.models.Category;
 import ru.milkparts.web.models.Item;
 
@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public final class MapperToCategoryPageDTO {
+public final class CategoryMapper {
 
-    private MapperToCategoryPageDTO() {
+    private CategoryMapper() {
 
     }
 

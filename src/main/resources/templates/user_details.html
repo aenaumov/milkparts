@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
       lang="ru">
 
 
 <head th:replace="~{common/headCommon :: headInfo(~{::title}, ~{::meta}, ~{::link})}" >
-    <title>ошибка 404</title>
+    <title>личный кабинет</title>
     <meta name="keywords" content=""/>
-    <meta name="description" content="ошибка 404"/>
+    <meta name="description" content="личный кабинет"/>
+
     <link/>
 
 </head>
@@ -38,7 +41,7 @@
     <div class="breadcrumbs center-align">
         <a th:href="@{/index}">Главная</a> &gt;
 
-        <span style="text-decoration: none;">Ошибка 404</span>
+        <span style="text-decoration: none;">личный кабинет</span>
 
     </div>
 
@@ -46,10 +49,14 @@
     <div id="middle">
         <div id="container">
             <div id="content">
-                <h1 style="padding-right: 185px;">Извините, страница не найдена.<br>Возможно она была перемещена.<br>
-                    Попробуйте начать с меню</h1>
-                <img th:src="@{/assets/404.png}" alt="" class="big-image"/>
+                <h1 style="padding-right: 185px;">Личный кабинет</h1>
 
+                <div> данные пользователя!!!</div>
+
+                <h1 th:inline="text">Hello <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" value="Sign Out"/>
+                </form>
 
                 <div class="main-clear">&nbsp;</div>
             </div><!-- #content-->
