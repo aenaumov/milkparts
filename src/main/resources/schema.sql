@@ -34,8 +34,18 @@ CREATE TABLE USERS
     USERNAME      VARCHAR(50)                             NOT NULL,
     EMAIL         VARCHAR(50)                             NOT NULL,
     USER_PASSWORD VARCHAR(200)                            NOT NULL,
+    VERIFIED      BOOLEAN                                 NOT NULL,
+    USER_ROLE     VARCHAR(10)                             NOT NULL,
     CONSTRAINT USER_PK PRIMARY KEY (USER_ID),
+    CONSTRAINT USERNAME_UNIQUE UNIQUE (USERNAME),
     CONSTRAINT EMAIL_UNIQUE UNIQUE (EMAIL)
-)
+);
+
+CREATE TABLE EMAIL_VERIFICATIONS
+(
+    VERIFICATION_ID VARCHAR(50),
+    USERNAME        VARCHAR(50),
+    CONSTRAINT E_V_PK PRIMARY KEY (VERIFICATION_ID)
+);
 
 -- create indexes

@@ -3,8 +3,8 @@
       lang="ru">
 
 <!--<head>-->
-<head th:replace="~{common/headCommon :: headInfo(~{::title}, ~{::meta}, ~{::link})}" >
-    <title>Login</title>
+<head th:replace="~{common/headCommon :: headInfo(~{::title}, ~{::meta}, ~{::link})}">
+    <title th:utext="#{label.pages.home.title}">Title</title>
     <meta name="keywords" content=""/>
     <meta name="description" content="login"/>
 
@@ -47,21 +47,40 @@
     <div id="middle">
         <div id="container">
             <div id="content">
-                <h1 style="padding-right: 185px;">Login</h1>
 
-                <div th:if="${param.error}">
-                    Invalid username and password.
+                <h1 style="padding-right: 185px;" th:utext="#{label.form.loginTitle}">Header</h1>
+
+                <div th:if="${param.verified}" th:utext="#{message.accountVerified}"
+                     class="alert alert-success">Account has been verified. Please sign-in
                 </div>
-                <div th:if="${param.logout}">
-                    You have been logged out.
+
+
+                <div th:if="${param.validate}" th:utext="#{message.regSucc}" class="alert alert-success">
+                    Account has been created. Please verify it by email before log in
                 </div>
+
+                <div th:if="${param.error}"
+                     th:text="${session[SPRING_SECURITY_LAST_EXCEPTION]}">error
+                </div>
+                <div th:if="${param.logout}" th:utext="#{message.logoutSucc}">You have been logged out.</div>
+
                 <form th:action="@{/login}" method="post">
-                    <div><label> User Name : <input type="text" name="username"/> </label></div>
-                    <div><label> Password: <input type="password" name="password"/> </label></div>
+                    <div><label class="col-sm-4" th:utext="#{label.form.loginUsername}">Email</label>
+                        <input type="text" name="username"/></div>
+
+                    <div><label class="col-sm-4" th:utext="#{label.form.loginPass}">password</label>
+                        <span class="col-sm-8"><input class="form-control" type='password' name='password'/></span>
+                    </div>
+
                     <div><input type="submit" value="Sign In"/></div>
                 </form>
 
+                <br/> Current Locale : <span th:utext="${#locale}"></span><br/><br/>
+
                 <div><a th:href="@{/reg}">Зарегистрироваться</a> &gt;</div>
+
+                <a class="btn btn-default" th:href="@{/reg}" th:utext="#{label.form.loginSignUp}">signup</a>
+                <br/>
 
                 <div class="main-clear">&nbsp;</div>
             </div><!-- #content-->

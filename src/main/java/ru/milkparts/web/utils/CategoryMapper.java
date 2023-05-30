@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public final class MapperToCategoryPageDTO {
+public final class CategoryMapper {
 
-    private MapperToCategoryPageDTO() {
+    private CategoryMapper() {
 
     }
 

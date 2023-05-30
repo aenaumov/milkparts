@@ -4,7 +4,10 @@
 
 <!--<head>-->
 <head th:replace="~{common/headCommon :: headInfo(~{::title}, ~{::meta}, ~{::link})}" >
-    <title>регистрация</title>
+<!--    <title>регистрация</title>-->
+
+    <title th:utext="#{label.form.title}">form</title>
+
     <meta name="keywords" content=""/>
     <meta name="description" content="регистрация пользователя"/>
 
@@ -47,6 +50,9 @@
     <div id="middle">
         <div id="container">
             <div id="content">
+
+                <h1 th:utext="#{label.form.title}">form</h1>
+
                 <h1 style="padding-right: 185px;">Для регистрации заполните форму, пожалуйста</h1>
 
                 <form action="#" th:action="@{reg}" th:object="${user}" method="POST" enctype="utf8">
@@ -56,25 +62,25 @@
                     </div>
 
                     <div>
-                        <label >Username: </label>
+                        <label th:utext="#{label.user.username}">Username: </label>
                         <input th:field="*{username}"/>
                         <p th:if="${#fields.hasErrors('username')}"
                            th:errors="*{username}">Validation error</p>
                     </div>
                     <div>
-                        <label >Email: </label>
+                        <label th:utext="#{label.user.email}">Email: </label>
                         <input type="email" th:field="*{email}"/>
                         <p th:if="${#fields.hasErrors('email')}"
                            th:errors="*{email}">Validation error</p>
                     </div>
                     <div>
-                        <label >Password: </label>
+                        <label th:utext="#{label.user.password}">Password: </label>
                         <input type="password" th:field="*{password}"/>
                         <p th:if="${#fields.hasErrors('password')}"
                            th:errors="*{password}">Validation error</p>
                     </div>
                     <div>
-                        <label >Confirm password: </label>
+                        <label th:utext="#{label.user.confirmPass}">Confirm password: </label>
                         <input type="password" th:field="*{matchingPassword}"/>
                         <p th:if="${#fields.hasErrors('matchingPassword')}"
                            th:errors="*{matchingPassword}">Validation error</p>
@@ -84,7 +90,14 @@
                         </div>
 
                     </div>
-                    <button type="submit" >submit</button>
+<!--                    <button type="submit" >submit</button>-->
+                    <div >
+<!--                        <input type="submit" value="Sign Up" />-->
+                        <button type="submit" class="btn btn-primary" th:utext="#{label.form.submit}">submit</button>
+<!--                        <p>Already have an account? <a href="/login">Sign in</a></p>-->
+                        </br>
+                        <a th:href="@{/login}" th:utext="#{label.form.loginLink}">login</a>
+                    </div>
                 </form>
 
                 <div class="main-clear">&nbsp;</div>

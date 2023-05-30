@@ -15,9 +15,8 @@ import java.util.List;
 @Table(name = "USERS")
 @NoArgsConstructor(access= AccessLevel.PROTECTED, force=true)
 @AllArgsConstructor
-public class User implements UserDetails {
+public class User  {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @Column(name = "USER_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,9 +27,12 @@ public class User implements UserDetails {
     private String email;
     @Column(name = "USER_PASSWORD")
     private String password;
+    @Column(name = "VERIFIED")
+    private Boolean verified;
+    @Column(name = "USER_ROLE")
+    private String userRole;
 
-
-    @Override
+ /*   @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
@@ -53,5 +55,5 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
+    }*/
 }

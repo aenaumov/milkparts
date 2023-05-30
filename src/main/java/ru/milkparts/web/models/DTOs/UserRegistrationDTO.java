@@ -1,30 +1,29 @@
 package ru.milkparts.web.models.DTOs;
 
 import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import ru.milkparts.web.models.User;
 import ru.milkparts.web.validation.PasswordMatches;
 import ru.milkparts.web.validation.ValidEmail;
 
 @Setter
 @Getter
 @RequiredArgsConstructor
+@AllArgsConstructor
 @PasswordMatches
 public class UserRegistrationDTO {
 
-    @NotEmpty(message = "Enter username")
+    @NotEmpty
     private String username;
-    @NotEmpty(message = "Enter password")
+    @NotEmpty
     private String password;
-    @NotEmpty(message = "Confirm password")
+    @NotEmpty
     private String matchingPassword;
     @ValidEmail
     private String email;
+    private Boolean verified = false;
+    private String userRole = "USER";
 
-    public User toUser(PasswordEncoder passwordEncoder) {
-        return new User(null, username, email, passwordEncoder.encode(password));
-    }
 }

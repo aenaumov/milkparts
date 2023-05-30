@@ -4,9 +4,9 @@ import ru.milkparts.web.models.DTOs.ItemPageDTO;
 import ru.milkparts.web.models.Category;
 import ru.milkparts.web.models.Item;
 
-public final class MapperToItemPageDTO {
+public final class ItemMapper {
 
-    private MapperToItemPageDTO() {
+    private ItemMapper() {
 
     }
 

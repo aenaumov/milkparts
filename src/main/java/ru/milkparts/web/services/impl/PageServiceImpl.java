@@ -1,6 +1,7 @@
-package ru.milkparts.web.services;
+package ru.milkparts.web.services.impl;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.milkparts.web.models.DTOs.CategoryPageDTO;
 import ru.milkparts.web.models.DTOs.ItemPageDTO;
 import ru.milkparts.web.exceptions.NotFoundException;
@@ -8,14 +9,16 @@ import ru.milkparts.web.models.Category;
 import ru.milkparts.web.models.Item;
 import ru.milkparts.web.repositories.CategoryRepository;
 import ru.milkparts.web.repositories.ItemRepository;
-import ru.milkparts.web.utils.MapperToCategoryPageDTO;
-import ru.milkparts.web.utils.MapperToItemPageDTO;
+import ru.milkparts.web.services.PageService;
+import ru.milkparts.web.utils.CategoryMapper;
+import ru.milkparts.web.utils.ItemMapper;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
-public class PageServiceImpl implements PageService{
+@Transactional(readOnly = true)
+public class PageServiceImpl implements PageService {
 
     private final ItemRepository itemRepository;
     private final CategoryRepository categoryRepository;
@@ -30,7 +33,7 @@ public class PageServiceImpl implements PageService{
         final Category category = getCategoryFetchItems(catId);
         final String cuttedDescription=stringCutter(category.getCatDescription());
 
-        return MapperToCategoryPageDTO.toCategoryPageDTO(category, cuttedDescription);
+        return CategoryMapper.toCategoryPageDTO(category, cuttedDescription);
     }
 
     @Override
@@ -43,7 +46,7 @@ public class PageServiceImpl implements PageService{
 
         final String cuttedDescription = stringCutter(item.getItemDescription());
 
-        return MapperToItemPageDTO.toItemPageDTO(item, category, cuttedDescription);
+        return ItemMapper.toItemPageDTO(item, category, cuttedDescription);
     }
 
     private String stringCutter(String description) {
