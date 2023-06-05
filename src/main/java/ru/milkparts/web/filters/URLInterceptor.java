@@ -13,7 +13,7 @@ public class URLInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
 
-        log.info("<<< Interceptor___" + request.getRequestURL());
+        log.info("<<< Interceptor___ " + request.getRequestURL());
         return true;
     }
 }
