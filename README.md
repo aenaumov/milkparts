@@ -9,4 +9,5 @@
 - Spring Data
 - Java Mail
 - Lombok
+- Maven
 - Thymeleaf
